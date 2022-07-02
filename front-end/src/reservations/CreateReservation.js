@@ -5,6 +5,8 @@ import ErrorAlert from "../layout/ErrorAlert";
 
 function CreateReservation() {
   const history = useHistory();
+  const [error, setError] = useState(null);
+
 
   // Set initial empty form state //
   const initialFormState = {
@@ -13,24 +15,34 @@ function CreateReservation() {
     mobile_number: "",
     reservation_date: "",
     reservation_time: "",
-    people,
+    people: null,
     created_at: "",
     updated_at: ""
   };
   const [reservation, setReservation] = useState({ ...initialFormState });
 
-// TODO: implement handlers below and on buttons
-const handleChange = ({ target }) => {
+
+  // Handlers //
+  const handleChange = ({ target }) => {
     setReservation({ ...reservation, [target.name]: target.value });
-}
-//   const handleSubmit;
-//   const handleReset;
+  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    createReservation(reservation)
+      .then((newReservation) => history.push(`/dashboard?date=${newReservation.reservation_date}`))
+      .catch((error) => setError(error));
+  };
+  const handleReset = (event) => {
+    event.preventDefault();
+    setReservation({ ...initialFormState });
+  };
+
 
   return (
     <main>
       <h1>Create a New Reservation</h1>
       <ErrorAlert error={error} />
-      <form >
+      <form onSubmit={handleSubmit}>
         <div className="row mb-3">
           <div className="col">
             <label htmlFor="first_name" className="form-label">First Name</label>
@@ -127,6 +139,7 @@ const handleChange = ({ target }) => {
           type="reset"
           className="btn btn-secondary btn-lg"
           style={{marginRight: "10px"}}
+          onClick={handleReset}
         >
           Reset Form
         </button>
