@@ -69,19 +69,14 @@ export async function listReservations(params, signal) {
 }
 
 
-const reservations = [];
-function nextId() {
-  return Math.random();
-}
-
 export async function createReservation(reservation, signal) {
-  const now = new Date().toISOString();
-  const newReservation = {
-    ...reservation,
-    reservation_id: nextId(),
-    created_at: now,
-    updated_at: now,
+  const url = `${API_BASE_URL}/reservations`;
+  reservation.people = Number(reservation.people);
+  const options = {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ data: reservation }),
+    signal,
   };
-  reservations.push(newReservation);
-  return newReservation;
+  return await fetchJson(url, options, reservation);
 }
