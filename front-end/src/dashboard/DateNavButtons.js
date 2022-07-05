@@ -23,22 +23,22 @@ function DateNavButtons({ currentDate }) {
 
   return (
     <div className="btn-toolbar" role="toolbar" aria-label="Toolbar with button">
-     <div class="btn-group" role="group">
+     <div className="btn-group" role="group">
       <button 
         type="button" 
-        class="btn btn-outline-secondary"
+        className="btn btn-outline-secondary"
         onClick={handlePrevious}
         >Previous
       </button>
       <button 
         type="button" 
-        class="btn btn-outline-secondary"
+        className="btn btn-outline-secondary"
         onClick={handleToday}
         >Today
       </button>
       <button 
         type="button" 
-        class="btn btn-outline-secondary"
+        className="btn btn-outline-secondary"
         onClick={handleNext}
         >Next
       </button>
