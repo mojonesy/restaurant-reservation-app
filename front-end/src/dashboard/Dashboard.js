@@ -37,7 +37,7 @@ function Dashboard({ date }) {
         
         <div id="reservationGrid" className="row row-cols-1">
           {reservations.map((reservation) => (
-            <div className="col">
+            <div className="col" key={reservation.reservation_id}>
               <ReservationCard
                 reservation_id={reservation.reservation_id}
                 first_name={reservation.first_name}
