@@ -12,7 +12,7 @@ function ReservationCard(
 
     
   return (
-    <div class="card border-secondary mb-3" key={reservation_id} style={{maxWidth: "18rem"}}>
+    <div className="card border-secondary mb-3" style={{maxWidth: "25rem"}}>
       <h4 className="card-header">{last_name}, {first_name}</h4>
       <div className="card-body">
         <h5 className="card-title">{reservation_time}, {reservation_date}</h5>
