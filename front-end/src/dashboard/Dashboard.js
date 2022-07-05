@@ -26,8 +26,8 @@ function Dashboard({ date }) {
     return () => abortController.abort();
   }
 
-  /* If no error is returned from server, display info */
-  if (reservationsError === null) {
+  /* If no error is returned from server and reservations exist, display info */
+  if (reservationsError === null && reservations.length) {
     return (
       <main>
         <h1>Dashboard</h1>
@@ -58,6 +58,23 @@ function Dashboard({ date }) {
     );
   }
 
+  /* If no error is returned from server and no reservations exist... */
+  else if (reservationsError === null && !reservations.length) {
+    return (
+      <main>
+        <h1>Dashboard</h1>
+        <div className="d-md-flex mb-3">
+          <h4 className="mb-0">Reservations for {date}</h4>
+        </div>
+        <h2>No reservations on this date.</h2>
+        <div className="dateNav">
+          <DateNavButtons currentDate={date} />
+        </div>
+      </main>
+    );
+  }
+
+  /* Server error */
   return (
     <main>
       <h1>Dashboard</h1>
@@ -66,7 +83,7 @@ function Dashboard({ date }) {
       </div>
       <ErrorAlert error={reservationsError} />
     </main>
-  );
+  ); 
 }
 
 export default Dashboard;
