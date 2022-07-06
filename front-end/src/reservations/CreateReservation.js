@@ -50,6 +50,7 @@ function CreateReservation() {
                 className="form-control"
                 onChange={handleChange}
                 value={reservation.first_name}
+                required
               />
             </div>
             <div className="col">
