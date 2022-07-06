@@ -1,11 +1,16 @@
 const service = require("./reservations.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
+const { today } = require("../utils/date-time");
 
 /**
  * List handler for reservation resources
  */
 async function list(req, res) {
-  const data = await service.list(req.query.date);
+  if (req.query.date) {
+    const data = await service.list(req.query.date);
+    res.json({ data });
+  }
+  const data = await service.list(today());
   res.json({ data });
 }
 
@@ -57,6 +62,32 @@ function hasProperties(...properties) {
   };
 }
 
+function hasValidDate(req, res, next) {
+  const { data: { reservation_date } = {} } = req.body;
+  const dateRegex = new RegExp(/(?<=\D|^)(?<year>\d{4})(?<sep>[^\w\s])(?<month>1[0-2]|0[1-9])\k<sep>(?<day>0[1-9]|[12][0-9]|(?<=11\k<sep>|[^1][4-9]\k<sep>)30|(?<=1[02]\k<sep>|[^1][13578]\k<sep>)3[01])(?=\D|$)/gm);
+  if (!reservation_date.match(dateRegex)) {
+    next({ status: 400, message: "reservation_date must be a valid date"});
+  }
+  next();
+}
+
+function hasValidTime(req, res, next) {
+  const { data: { reservation_time } = {} } = req.body;
+  const timeRegex = new RegExp(/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/);
+  if (!reservation_time.match(timeRegex)) {
+    next({ status: 400, message: "reservation_time must be a valid time"});
+  }
+  next();
+}
+
+function peopleIsNumber(req, res, next) {
+  const { data: { people } = {} } = req.body;
+  if (!Number.isInteger(people)) {
+    next({ status: 400, message: "people must be a number"});
+  }
+  next();
+}
+
 /**
  * Create new reservation handler
  */
@@ -70,7 +101,10 @@ module.exports = {
   create: [
     hasData,
     hasOnlyValidProperties,
-    hasProperties("last_name", "mobile_number", "reservation_date", "reservation_time", "people"),
+    hasProperties("first_name", "last_name", "mobile_number", "reservation_date", "reservation_time", "people"),
+    hasValidDate,
+    peopleIsNumber,
+    hasValidTime,
     asyncErrorBoundary(create),
   ],
   list: asyncErrorBoundary(list),
