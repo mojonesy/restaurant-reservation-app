@@ -12,7 +12,6 @@ function DateNavButtons({ currentDate }) {
   }
   const handleToday = (event) => {
     event.preventDefault();
-    console.log(currentDate);
     history.push(`/dashboard?date=${today()}`);
   }
   const handleNext = (event) => {
