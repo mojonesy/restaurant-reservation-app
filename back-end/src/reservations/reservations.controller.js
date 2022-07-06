@@ -9,9 +9,10 @@ async function list(req, res) {
   if (req.query.date) {
     const data = await service.list(req.query.date);
     res.json({ data });
+  } else {
+    const data = await service.list(today());
+    res.json({ data });
   }
-  const data = await service.list(today());
-  res.json({ data });
 }
 
 /**
