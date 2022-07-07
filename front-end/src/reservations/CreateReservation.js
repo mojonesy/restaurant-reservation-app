@@ -6,7 +6,10 @@ import ErrorAlert from "../layout/ErrorAlert";
 function CreateReservation() {
   const history = useHistory();
   const [error, setError] = useState(undefined);
-
+  const [tuesdayError, setTuesdayError] = useState(false);
+  const [previousDateError, setPreviousDateError] = useState(false);
+  console.log(`Tuesday error: ${tuesdayError}`);
+  console.log(`Previous date error: ${previousDateError}`);
 
   // Set initial empty form state //
   const initialFormState = {
@@ -19,26 +22,82 @@ function CreateReservation() {
   };
   const [reservation, setReservation] = useState({ ...initialFormState });
 
-
   // Handlers //
   const handleChange = ({ target }) => {
     setReservation({ ...reservation, [target.name]: target.value });
   }
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    createReservation(reservation)
-      .then((newReservation) => history.push(`/dashboard?date=${newReservation.reservation_date}`))
-      .catch((error) => setError(error));
+
+    const day = new Date(reservation.reservation_date).getUTCDay();
+    const date = new Date(reservation.reservation_date).setHours(0, 0, 0, 0);
+    const today = new Date().setHours(0, 0, 0, 0);
+    if (day === 2 && date <= today) {
+      setTuesdayError(true);
+      setPreviousDateError(true);
+      return;
+    } else if (date <= today) {
+      setPreviousDateError(true);
+      return;
+    } else if (day === 2) {
+      setTuesdayError(true);
+      return;
+    } else {
+      createReservation(reservation)
+        .then((newReservation) => history.push(`/dashboard?date=${newReservation.reservation_date}`))
+        .catch((error) => setError(error));
+    }
   };
+
   const handleReset = (event) => {
     event.preventDefault();
     setReservation({ ...initialFormState });
+    setPreviousDateError(false);
+    setTuesdayError(false);
   };
+
 
   if (!error) {
     return (
       <main>
         <h1>Create a New Reservation</h1>
+
+
+        {/* Display reservation creation errors if set to true */}
+        <div 
+          className="alert alert-danger alert-dismissible fade show" 
+          role="alert"
+          style={{display: tuesdayError ? "block" : "none"}}>
+          <strong>Error</strong>: Cannot make reservation on a Tuesday
+          <button 
+            type="button" 
+            className="close" 
+            data-dismiss="alert" 
+            aria-label="Close"
+            onClick={() => setTuesdayError(false)}
+            >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div 
+          className="alert alert-danger alert-dismissible fade show" 
+          role="alert"
+          style={{display: previousDateError ? "block" : "none"}}>
+          <strong>Error</strong>: Cannot make reservation on a previous date
+          <button 
+            type="button" 
+            className="close" 
+            data-dismiss="alert" 
+            aria-label="Close"
+            onClick={() => setPreviousDateError(false)}
+            >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+
+        {/* Reservation Form */}
         <form onSubmit={handleSubmit}>
           <div className="row mb-3">
             <div className="col">
