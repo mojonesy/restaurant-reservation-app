@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { createReservation } from "../utils/api";
-import CreateErrors from "./CreateErrors";
 import ErrorAlert from "../layout/ErrorAlert";
 
 function CreateReservation() {
   const history = useHistory();
-  const [error, setError] = useState(undefined);
-  const [tuesdayError, setTuesdayError] = useState(false);
-  const [previousDateError, setPreviousDateError] = useState(false);
-  console.log(`Tuesday error: ${tuesdayError}`);
-  console.log(`Previous date error: ${previousDateError}`);
+  const [error, setError] = useState(null);
 
   // Set initial empty form state //
   const initialFormState = {
@@ -28,53 +23,28 @@ function CreateReservation() {
     setReservation({ ...reservation, [target.name]: target.value });
   }
 
+  // const day = new Date(reservation.reservation_date).getUTCDay();
+  // const date = new Date(reservation.reservation_date).setHours(0, 0, 0, 0);
+  // const today = new Date().setHours(0, 0, 0, 0);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    const day = new Date(reservation.reservation_date).getUTCDay();
-    const date = new Date(reservation.reservation_date).setHours(0, 0, 0, 0);
-    const today = new Date().setHours(0, 0, 0, 0);
-    if (day === 2 && date <= today) {
-      setTuesdayError(true);
-      setPreviousDateError(true);
-      return;
-    } else if (date <= today) {
-      setPreviousDateError(true);
-      return;
-    } else if (day === 2) {
-      setTuesdayError(true);
-      return;
-    } else {
-      createReservation(reservation)
-        .then((newReservation) => history.push(`/dashboard?date=${newReservation.reservation_date}`))
-        .catch((error) => setError(error));
-    }
+    createReservation(reservation)
+      .then((newReservation) => history.push(`/dashboard?date=${newReservation.reservation_date}`))
+      .catch((error) => setError(error));
   };
 
   const handleReset = (event) => {
     event.preventDefault();
     setReservation({ ...initialFormState });
-    setPreviousDateError(false);
-    setTuesdayError(false);
   };
 
 
-  if (!error) {
+
     return (
       <main>
         <h1>Create a New Reservation</h1>
-
-
-        {/* Display reservation creation errors if set to true */}
-        <div>
-          <CreateErrors 
-            tuesdayError={tuesdayError}
-            setTuesdayError={setTuesdayError} 
-            previousDateError={previousDateError}
-            setPreviousDateError={setPreviousDateError}
-          />
-        </div>
-
+        <ErrorAlert error={error} />
 
         {/* Reservation Form */}
         <form onSubmit={handleSubmit}>
@@ -192,12 +162,5 @@ function CreateReservation() {
     );
   }
 
-  return (
-    <main>
-      <h1>Create a New Reservation</h1>
-      <ErrorAlert error={error} />
-    </main>
-  );
-}
 
 export default CreateReservation;
