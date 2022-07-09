@@ -102,7 +102,7 @@ function IsNotTuesday(req, res, next) {
     1
   );
   if (numDate.getDay() === 2) {
-    next({ status: 400, message: "restaurant closed on Tuesdays" });
+    next({ status: 400, message: "restaurant is closed on Tuesdays" });
   } else {
     next();
   }
@@ -111,18 +111,19 @@ function IsNotTuesday(req, res, next) {
 function IsNotPastDate(req, res, next) {
   const { reservation_date, reservation_time } = req.body.data;
   const [hour, minute] = reservation_time.split(":");
-  let [year, month, date] = reservation_date.split("-");
+  let [year, month, day] = reservation_date.split("-");
   month -= 1;
-  const reservationDate = new Date(year, month, date, hour, minute, 59, 59);
-  const today = new Date();
+  const reservationDate = new Date(year, month, day, hour, minute, 59, 59).getTime();
+  const today = new Date().getTime();
 
-  if (today <= reservationDate) {
-    return next();
+  if (reservationDate > today) {
+    next();
+  } else {
+    next({
+      status: 400,
+      message: `reservation_date must be set in the future`,
+    });
   }
-  return next({
-    status: 400,
-    message: `reservation_date must be set in the future`,
-  });
 };
 
 /**
