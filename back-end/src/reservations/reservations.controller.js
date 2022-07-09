@@ -109,22 +109,20 @@ function dateIsNotTuesday(req, res, next) {
 }
 
 function dateIsNotPast(req, res, next) {
-  const { reservation_date } = req.body.data;
+  const { reservation_date, reservation_time } = req.body.data;
+  const [hour, minute] = reservation_time.split(":");
+  let [year, month, date] = reservation_date.split("-");
+  month -= 1;
+  const reservationDate = new Date(year, month, date, hour, minute, 59, 59);
   const today = new Date();
-  const dateString = reservation_date.split("-");
-  const resDate = new Date(
-    Number(dateString[0]),
-    Number(dateString[1]) - 1,
-    Number(dateString[2]),
-    0,
-    0,
-    1
-  );
-  if (resDate > today) {
-    next();
-  } else {
-    next({ status: 400, message: "reservation must be for a future date"});
+
+  if (today <= reservationDate) {
+    return next();
   }
+  return next({
+    status: 400,
+    message: `reservation_date must be set in the future`,
+  });
 };
 
 function isAfterPresentTime(req, res, next) {
