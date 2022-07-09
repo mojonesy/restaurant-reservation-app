@@ -121,11 +121,23 @@ function dateIsNotPast(req, res, next) {
     1
   );
   if (resDate > today) {
-  next();
+    next();
   } else {
     next({ status: 400, message: "reservation must be for a future date"});
   }
 };
+
+function isAfterPresentTime(req, res, next) {
+  const { reservation_time, reservation_date } = req.body.data;
+  const nowInMilliseconds = new Date().getTime();
+  const dateTime = reservation_date.concat(' ', reservation_time);
+  const resInMilliseconds = new Date(dateTime).getTime();
+  if (resInMilliseconds && resInMilliseconds !== "" && (resInMilliseconds > nowInMilliseconds)) {
+    next();
+  } else {
+    next({ status: 400, message: "reservation time must be in the future "});
+  }
+}
 
 /**
  * Create new reservation handler
