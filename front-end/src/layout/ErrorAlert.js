@@ -8,10 +8,24 @@ import React from "react";
  *  a bootstrap danger alert that contains the message string.
  */
 
-function ErrorAlert({ error }) {
+function ErrorAlert({ error, setError }) {
   return (
     error && (
-      <div className="alert alert-danger m-2">Error: {error.message}</div>
+      <div 
+        className="alert alert-danger m-2 alert-dismissible fade show"
+        role="alert"
+      >
+        <strong>Error</strong>: {error.message}
+        <button
+          type="button"
+          className="close"
+          data-dismiss="alert"
+          aria-label="Close"
+          onClick={() => setError(false)}
+        >
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
     )
   );
 }
