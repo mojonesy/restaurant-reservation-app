@@ -44,7 +44,7 @@ function CreateReservation() {
     return (
       <main>
         <h1>Create a New Reservation</h1>
-        <ErrorAlert error={error} />
+        <ErrorAlert error={error} setError={setError}/>
 
         {/* Reservation Form */}
         <form onSubmit={handleSubmit}>
