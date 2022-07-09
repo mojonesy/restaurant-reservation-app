@@ -90,7 +90,7 @@ function peopleIsNumber(req, res, next) {
   next();
 }
 
-function dateIsNotTuesday(req, res, next) {
+function IsNotTuesday(req, res, next) {
   const { reservation_date } = req.body.data;
   const dateString = reservation_date.split("-");
   const numDate = new Date(
@@ -108,7 +108,7 @@ function dateIsNotTuesday(req, res, next) {
   }
 }
 
-function dateIsNotPast(req, res, next) {
+function IsNotPastDate(req, res, next) {
   const { reservation_date, reservation_time } = req.body.data;
   const [hour, minute] = reservation_time.split(":");
   let [year, month, date] = reservation_date.split("-");
@@ -124,18 +124,6 @@ function dateIsNotPast(req, res, next) {
     message: `reservation_date must be set in the future`,
   });
 };
-
-function isAfterPresentTime(req, res, next) {
-  const { reservation_time, reservation_date } = req.body.data;
-  const nowInMilliseconds = new Date().getTime();
-  const dateTime = reservation_date.concat(' ', reservation_time);
-  const resInMilliseconds = new Date(dateTime).getTime();
-  if (resInMilliseconds && resInMilliseconds !== "" && (resInMilliseconds > nowInMilliseconds)) {
-    next();
-  } else {
-    next({ status: 400, message: "reservation time must be in the future "});
-  }
-}
 
 /**
  * Create new reservation handler
@@ -155,8 +143,8 @@ module.exports = {
     hasValidDate,
     peopleIsNumber,
     hasValidTime,
-    dateIsNotTuesday,
-    dateIsNotPast,
+    IsNotTuesday,
+    IsNotPastDate,
     asyncErrorBoundary(create),
   ],
   list: asyncErrorBoundary(list),
