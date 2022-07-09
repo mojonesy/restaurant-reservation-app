@@ -102,7 +102,7 @@ function dateIsNotTuesday(req, res, next) {
     1
   );
   if (numDate.getDay() === 2) {
-    next({ status: 400, message: "reservation cannot be on a Tuesday" });
+    next({ status: 400, message: "restaurant closed on Tuesdays" });
   } else {
     next();
   }
