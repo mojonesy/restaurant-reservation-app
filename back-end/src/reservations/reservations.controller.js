@@ -121,10 +121,22 @@ function IsNotPastDate(req, res, next) {
   } else {
     next({
       status: 400,
-      message: `reservation_date must be set in the future`,
+      message: "reservation date and time must be set in the future",
     });
   }
 };
+
+function isWithinBusinessHours(req, res, next) {
+  const { reservation_time } = req.body.data;
+  if (reservation_time >= "10:30" && reservation_time <= "21:30") {
+    next();
+  } else {
+    next({
+      status: 400,
+      message: "reservation time must be within appropriate business hours"
+    });
+  }
+}
 
 /**
  * Create new reservation handler
@@ -146,6 +158,7 @@ module.exports = {
     hasValidTime,
     IsNotTuesday,
     IsNotPastDate,
+    isWithinBusinessHours,
     asyncErrorBoundary(create),
   ],
   list: asyncErrorBoundary(list),
