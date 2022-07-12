@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { listReservations } from "../utils/api";
+import { listReservations, listTables } from "../utils/api";
 import ReservationCard from "./ReservationCard";
 import DateNavButtons from "./DateNavButtons";
+import TablesList from "../tables/TablesList";
 import ErrorAlert from "../layout/ErrorAlert";
 
 /**
@@ -11,13 +12,16 @@ import ErrorAlert from "../layout/ErrorAlert";
  * @returns {JSX.Element}
  */
 function Dashboard({ date }) {
-
+  
   const [reservations, setReservations] = useState([]);
   const [reservationsError, setReservationsError] = useState(null);
+  const [tables, setTables] = useState([]);
+  const [tablesError, setTablesError] = useState(null);
 
-  useEffect(loadDashboard, [date]);
+  // Load Dashboard - reservations and tables //
+  useEffect(loadReservationsAndTables, [date]);
 
-  function loadDashboard() {
+  function loadReservations() {
     const abortController = new AbortController();
     setReservationsError(null);
     listReservations({ date }, abortController.signal)
@@ -25,6 +29,23 @@ function Dashboard({ date }) {
       .catch(setReservationsError);
     return () => abortController.abort();
   }
+
+  function loadTables() {
+    const abortController = new AbortController();
+    setTablesError(null);
+    listTables(abortController.signal)
+      .then(setTables)
+      .catch(setTablesError);
+    return () => abortController.abort();
+  }
+
+  function loadReservationsAndTables() {
+    const abortController = new AbortController();
+    loadReservations();
+    loadTables();
+    return () => abortController.abort();
+  }
+
 
   /* If no error is returned from server and reservations exist, display info */
   if (reservationsError === null && reservations.length) {
@@ -53,6 +74,13 @@ function Dashboard({ date }) {
 
         <div className="dateNav">
           <DateNavButtons currentDate={date} />
+        </div>
+
+        <div className="tables">
+          <TablesList 
+            tables={tables}
+            tablesError={tablesError}
+          />
         </div>
       </main>
     );
