@@ -1,4 +1,5 @@
-.card {
+#tableGrid .card {
+  border-radius: 50px;
   position: relative;
 }
 
