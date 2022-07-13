@@ -40,7 +40,7 @@ function CreateTable() {
               className="form-control"
               onChange={handleChange}
               value={table.table_name}
-              minlength="2"
+              minLength="2"
               required
             />
           </div>
