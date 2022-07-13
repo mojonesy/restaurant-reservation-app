@@ -1,0 +1,15 @@
+.card {
+  position: relative;
+}
+
+/* Mel - help with position of badge to stay inside card */
+.badge {
+  position: absolute;
+  bottom: 130px;
+  left: 170px;
+}
+
+.alert {
+  margin-bottom: 0px;
+  text-align: center;
+}
