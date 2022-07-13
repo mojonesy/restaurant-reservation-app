@@ -63,8 +63,8 @@ function tableNameHasValidLength(req, res, next) {
 
 function hasValidCapacity(req, res, next) {
   const { capacity } = req.body.data;
-  if (capacity < 1 || capacity > 8) {
-    next({ status: 400, message: "table capacity must be between 1 and 8 people"});
+  if (capacity < 1 || capacity > 8 || typeof capacity !== "number") {
+    next({ status: 400, message: "table capacity must be a number between 1 and 8" });
   }
   next();
 }
