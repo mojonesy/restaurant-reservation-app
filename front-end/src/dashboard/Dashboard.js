@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { listReservations, listTables } from "../utils/api";
 import ReservationCard from "./ReservationCard";
+import TableCard from "./TableCard";
 import DateNavButtons from "./DateNavButtons";
-import TablesList from "../tables/TablesList";
 import ErrorAlert from "../layout/ErrorAlert";
 
 /**
@@ -56,9 +56,10 @@ function Dashboard({ date }) {
           <h4 className="mb-0">Reservations for {date}</h4>
         </div>
         
-        <div id="reservationGrid" className="row row-cols-2">
+        {/* Reservations */}
+        <div id="reservationGrid" className="row row-cols-3">
           {reservations.map((reservation) => (
-            <div className="col" key={reservation.reservation_id}>
+            <div className="col-sm" key={reservation.reservation_id}>
               <ReservationCard
                 reservation_id={reservation.reservation_id}
                 first_name={reservation.first_name}
@@ -72,15 +73,23 @@ function Dashboard({ date }) {
           ))}
         </div>
 
-        <div className="dateNav">
+        <div className="dateNav" style={{marginBottom: "17px"}}>
           <DateNavButtons currentDate={date} />
         </div>
 
-        <div className="tables">
-          <TablesList 
-            tables={tables}
-            tablesError={tablesError}
-          />
+        {/* Tables */}
+        <ErrorAlert error={tablesError} />
+        <div id="tableGrid" className="row row-cols-4">
+          {tables.map((table) => (
+            <div className="col-sm" key={table.table_id}>
+              <TableCard
+                table_id={table.table_id}
+                table_name={table.table_name}
+                capacity={table.capacity}
+                reservation_id={table.reservation_id}
+              />
+            </div>
+          ))}
         </div>
       </main>
     );
