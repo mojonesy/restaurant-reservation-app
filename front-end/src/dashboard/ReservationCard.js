@@ -1,14 +1,14 @@
 import React from "react";
 
-function ReservationCard(
-  { reservation_id, 
-    first_name, 
-    last_name, 
-    mobile_number, 
-    reservation_date, 
-    reservation_time, 
-    people }
-) {
+function ReservationCard({ 
+  reservation_id, 
+  first_name, 
+  last_name, 
+  mobile_number, 
+  reservation_date, 
+  reservation_time, 
+  people 
+}) {
 
     
   return (
