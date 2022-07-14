@@ -56,7 +56,7 @@ function hasProperties(...properties) {
 function tableNameHasValidLength(req, res, next) {
   const { table_name } = req.body.data;
   if (table_name.length < 2) {
-    next({ status: 400, message: "table name must be at least 2 characters"});
+    next({ status: 400, message: "table_name must be at least 2 characters"});
   }
   next();
 }
@@ -102,19 +102,19 @@ async function tableExists(req, res, next) {
   next({ status: 400, message: `table ${table_id} does not exist` });
 }
 
-function tableIsOccupied(req, res, next) {
-  const data = res.locals.table;
-  if (data.reservation_id && data.reservation_id !== null) {
-    return next({ status: 400, message: "table is already occupied" });
-  }
-  next();
-}
-
 function tableHasSufficientCapacity(req, res, next) {
   const people = res.locals.reservation.people;
   const capacity = res.locals.table.capacity;
   if (people > capacity) {
     return next({ status: 400, message: "number of people in reservation exceeds table capacity" });
+  }
+  next();
+}
+
+function tableIsOccupied(req, res, next) {
+  const reservation_id = res.locals.table.reservation_id;
+  if (reservation_id) {
+    return next({ status: 400, message: "table is already occupied" });
   }
   next();
 }
@@ -143,13 +143,12 @@ module.exports = {
     ],
     list: asyncErrorBoundary(list),
     update: [
-      asyncErrorBoundary(reservationExists),
       asyncErrorBoundary(tableExists),
       hasData,
-      hasOnlyValidProperties,
       hasProperties("reservation_id"),
-      tableIsOccupied,
+      asyncErrorBoundary(reservationExists),
       tableHasSufficientCapacity,
+      tableIsOccupied,
       asyncErrorBoundary(update),
     ]
 }
