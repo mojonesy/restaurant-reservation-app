@@ -23,10 +23,6 @@ function CreateReservation() {
     setReservation({ ...reservation, [target.name]: target.value });
   }
 
-  // const day = new Date(reservation.reservation_date).getUTCDay();
-  // const date = new Date(reservation.reservation_date).setHours(0, 0, 0, 0);
-  // const today = new Date().setHours(0, 0, 0, 0);
-
   const handleSubmit = (event) => {
     event.preventDefault();
     createReservation(reservation)
@@ -39,7 +35,6 @@ function CreateReservation() {
     event.preventDefault();
     setReservation({ ...initialFormState });
   };
-
 
 
     return (
