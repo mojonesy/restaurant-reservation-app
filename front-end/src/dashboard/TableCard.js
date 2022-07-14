@@ -16,13 +16,21 @@ function TableCard({
         <h6 className="card-title">{table_name}</h6>
         <p className="card-subtitle mb-2 text-muted">Reservation #{reservation_id}</p>
         <div 
-          className={`alert ${reservation_id ? "alert-warning" : "alert-success"} d-flex align-items-center`} 
+          className={`alert ${reservation_id ? "alert-warning" : "alert-success"}`} 
           role="alert" 
           data-table-id-status={table_id}
         >
-        <div>
           {reservation_id ? "Occupied" : "Free"}
-        </div>
+          {reservation_id && 
+            <button 
+              type="button" 
+              className="btn btn-dark"
+              data-table-id-finish={table_id}
+              style={{marginLeft: "5px"}}
+              >
+                Finish
+              </button>
+            }
         </div>
       </div>
     </div>
