@@ -18,7 +18,7 @@ function CreateTable() {
   const handleSubmit = (event) => {
     event.preventDefault();
     createTable(table)
-      .then((newTable) => history.push("/dashboard"))
+      .then(() => history.push("/dashboard"))
       .catch((error) => setError(error));
   }
 
