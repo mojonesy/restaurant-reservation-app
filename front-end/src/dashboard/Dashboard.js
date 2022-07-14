@@ -47,15 +47,17 @@ function Dashboard({ date }) {
   }
 
 
-  /* If no error is returned from server and reservations exist, display info */
-  if (reservationsError === null && reservations.length) {
+  /* If reservations exist, display info */
+  
     return (
       <main>
         <h1>Dashboard</h1>
-        <div className="d-md-flex mb-3">
+        <div className="d-md-flex flex-column mb-3">
+          {!reservations.length && <h2>No reservations on this date.</h2>}
           <h4 className="mb-0">Reservations for {date}</h4>
         </div>
-        
+        <ErrorAlert error={reservationsError} setError={setReservationsError} />
+
         {/* Reservations */}
         <div id="reservationGrid" className="row row-cols-3">
           {reservations.map((reservation) => (
@@ -81,7 +83,7 @@ function Dashboard({ date }) {
         <div className="d-md-flex mb-3">
           <h4 className="mb-0">Tables</h4>
         </div>
-        <ErrorAlert error={tablesError} />
+        <ErrorAlert error={tablesError} setError={setTablesError} />
         <div id="tableGrid" className="row row-cols-4">
           {tables.map((table) => (
             <div className="col-sm-3" key={table.table_id}>
@@ -96,34 +98,6 @@ function Dashboard({ date }) {
         </div>
       </main>
     );
-  }
-
-  /* If no error is returned from server and no reservations exist... */
-  else if (reservationsError === null && !reservations.length) {
-    return (
-      <main>
-        <h1>Dashboard</h1>
-        <div className="d-md-flex mb-3">
-          <h4 className="mb-0">Reservations for {date}</h4>
-        </div>
-        <h2>No reservations on this date.</h2>
-        <div className="dateNav">
-          <DateNavButtons currentDate={date} />
-        </div>
-      </main>
-    );
-  }
-
-  /* Server error */
-  return (
-    <main>
-      <h1>Dashboard</h1>
-      <div className="d-md-flex mb-3">
-        <h4 className="mb-0">Reservations for {date}</h4>
-      </div>
-      <ErrorAlert error={reservationsError} />
-    </main>
-  ); 
 }
 
 export default Dashboard;
