@@ -8,7 +8,7 @@ function CreateTable() {
   const [error, setError] = useState(null);
   const [table, setTable] = useState({
     table_name: "",
-    capacity: 1,
+    capacity: "",
   });
 
   // Handlers //
@@ -25,8 +25,10 @@ function CreateTable() {
 
   return (
     <main>
-      <h1>Create a New Table</h1>
-      <ErrorAlert error={error} setError={setError} />
+      <div className="d-md-flex mb-3">
+        <h1>Create a New Table</h1>
+        <ErrorAlert error={error} setError={setError} />
+      </div>
 
       {/* Table Form */}
       <form onSubmit={handleSubmit}>
@@ -52,6 +54,7 @@ function CreateTable() {
               name="capacity"
               id="capacity"
               className="form-control"
+              placeholder="Choose a number between 1 and 8"
               onChange={handleChange}
               value={table.capacity}
               min="1"
