@@ -13,7 +13,7 @@ function TableCard({
     <div className="card">
       <div className="card-body">
         <span className="badge bg-info rounded-pill">{capacity}</span>
-        <h6 className="card-title">Table: {table_name}</h6>
+        <h6 className="card-title">{table_name}</h6>
         <p className="card-subtitle mb-2 text-muted">Reservation #{reservation_id}</p>
         <div 
           className={`alert ${reservation_id ? "alert-warning" : "alert-success"} d-flex align-items-center`} 
