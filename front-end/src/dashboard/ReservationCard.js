@@ -23,14 +23,14 @@ function ReservationCard({
         className="card-footer border-secondary text-secondary d-inline-flex justify-content-between align-items-center"
         style={{textAlign: "right"}} 
       >
-      <a 
-        className="btn btn-secondary" 
-        href={`/reservations/${reservation_id}/seat`} 
-        role="button"
-      >
-        Seat
-      </a>
-      Reservation #{reservation_id}
+        <a 
+          className="btn btn-secondary" 
+          href={`/reservations/${reservation_id}/seat`} 
+          role="button"
+        >
+          Seat
+        </a>
+        Reservation #{reservation_id}
       </div>
     </div>
   );
