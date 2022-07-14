@@ -78,10 +78,13 @@ function Dashboard({ date }) {
         </div>
 
         {/* Tables */}
+        <div className="d-md-flex mb-3">
+          <h4 className="mb-0">Tables</h4>
+        </div>
         <ErrorAlert error={tablesError} />
         <div id="tableGrid" className="row row-cols-4">
           {tables.map((table) => (
-            <div className="col-sm" key={table.table_id}>
+            <div className="col-sm-3" key={table.table_id}>
               <TableCard
                 table_id={table.table_id}
                 table_name={table.table_name}
