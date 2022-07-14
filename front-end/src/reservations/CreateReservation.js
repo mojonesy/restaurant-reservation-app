@@ -44,9 +44,11 @@ function CreateReservation() {
 
     return (
       <main>
-        <h1>Create a New Reservation</h1>
-        <ErrorAlert error={error} setError={setError}/>
-
+        <div className="d-md-flex mb-3">
+          <h1>Create a New Reservation</h1>
+          <ErrorAlert error={error} setError={setError}/>
+        </div>
+        
         {/* Reservation Form */}
         <form onSubmit={handleSubmit}>
           <div className="row mb-3">
