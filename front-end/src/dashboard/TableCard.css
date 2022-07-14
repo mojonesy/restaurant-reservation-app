@@ -1,13 +1,16 @@
 #tableGrid .card {
-  border-radius: 50px;
+  border-radius: 40px;
   position: relative;
+  margin-bottom: 10px;
 }
 
 /* Mel - help with position of badge to stay inside card */
-.badge {
+#tableGrid .badge {
   position: absolute;
-  bottom: 130px;
-  left: 170px;
+  top: 12px;
+  right: 12px;
+  border-radius: 10px 25px 10px 10px;
+  font-size: small;
 }
 
 #tableGrid .alert {
