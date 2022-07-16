@@ -100,7 +100,7 @@ export async function readReservation(reservation_id, signal) {
  * @returns {Promise<[table]>}
  *  a promise that resolves to a possibly empty array of tables saved in the database.
  */
-export async function listTables(params, signal) {
+export async function listTables(signal) {
   const url = `${API_BASE_URL}/tables`;
   return await fetchJson(url, { headers, signal }, []);
 }
@@ -143,4 +143,18 @@ export async function updateTable(reservation_id, table_id, updatedTable, signal
     body: JSON.stringify({ data: { reservation_id: reservation_id } }),
   };
   return await fetchJson(url, options, updatedTable);
+}
+
+
+/**
+ * Removes current reservation_id from table.
+ * Does not return anything.
+ */
+export async function removeReservation(table_id, signal){
+  const url = `${API_BASE_URL}/tables/${table_id}/seat`;
+  const options = {
+    method: "DELETE",
+    signal
+  };
+  return await fetchJson(url, options);
 }
