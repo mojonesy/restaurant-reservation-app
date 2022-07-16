@@ -131,6 +131,14 @@ async function update(req, res) {
   res.json({ data });
 }
 
+/**
+ * Remove reservation_id from table
+ */
+async function removeReservation(req, res) {
+  await service.removeReservation(req.params.table_id);
+  res.sendStatus(204);
+}
+
 
 module.exports = {
     create: [
@@ -150,5 +158,6 @@ module.exports = {
       tableHasSufficientCapacity,
       tableIsOccupied,
       asyncErrorBoundary(update),
-    ]
+    ],
+    removeReservation: asyncErrorBoundary(removeReservation),
 }
