@@ -92,6 +92,7 @@ function Dashboard({ date }) {
                 table_name={table.table_name}
                 capacity={table.capacity}
                 reservation_id={table.reservation_id}
+                setTablesError={setTablesError}
               />
             </div>
           ))}
