@@ -14,10 +14,9 @@ function TableCard({
 
   const handleFinish = () => {
     if (window.confirm("Is this table ready to seat new guests? This cannot be undone.")) {
-      removeReservation(table_id)
-        .then(() => listTables())
-        .catch((error) => setError(error));
-    }
+        removeReservation(table_id)
+          .then(window.location.reload());
+      }
   }
 
 
