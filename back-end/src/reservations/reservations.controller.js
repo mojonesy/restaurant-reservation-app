@@ -142,7 +142,7 @@ function isWithinBusinessHours(req, res, next) {
 function hasDefaultBookedStatus(req, res, next) {
   const { status } = req.body.data;
   if (status && status !== "booked") {
-    next({ status: 400, message: "a new reservation must have a default status of 'booked.'" });
+    next({ status: 400, message: `A new reservation cannot have a status of ${status}` });
   } else {
     next();
   }
