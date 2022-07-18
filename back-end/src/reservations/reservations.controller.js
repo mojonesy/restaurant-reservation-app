@@ -25,6 +25,7 @@ const VALID_PROPERTIES = [
   "reservation_date",
   "reservation_time",
   "people",
+  "status"
 ];
 
 function hasData(req, res, next) {
