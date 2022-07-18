@@ -46,29 +46,10 @@ async function update(updatedTable, updatedReservation) {
     .catch(trx.rollback);
 }
 
-async function removeReservation(table_id, updatedReservation) {
-  const trx = await knex.transaction();
-  return trx("tables")
-    .select("*")
-    .where({"table_id": table_id})
-    .update('reservation_id', null)
-    .then(updatedRecords => updatedRecords[0])
-    .then(() => {
-      return trx("reservations")
-        .select("*")
-        .where({"reservation_id": updatedReservation.reservation_id})
-        .update(updatedReservation, "*")
-        .then(updatedResRecords => updatedResRecords[0]);
-    })
-    .then(trx.commit)
-    .catch(trx.rollback);
-}
-
 module.exports = {
     create,
     list,
     read,
     readReservation,
     update,
-    removeReservation,
 }
