@@ -1,4 +1,5 @@
 import React from "react";
+import "./ReservationCard.css";
 
 function ReservationCard({ 
   reservation_id, 
@@ -7,7 +8,8 @@ function ReservationCard({
   mobile_number, 
   reservation_date, 
   reservation_time, 
-  people 
+  people,
+  status 
 }) {
 
     
@@ -20,16 +22,26 @@ function ReservationCard({
         <h6 className="card-subtitle mb-2 text-muted">Mobile Number: {mobile_number}</h6>
       </div>
       <div 
-        className="card-footer border-secondary text-secondary d-inline-flex justify-content-between align-items-center"
-        style={{textAlign: "right"}} 
-      >
-        <a 
-          className="btn btn-secondary" 
-          href={`/reservations/${reservation_id}/seat`} 
-          role="button"
-        >
-          Seat
-        </a>
+        className="card-footer border-secondary text-secondary"
+        id="resCardFooter"
+        style={{textAlign: "right"}}>
+        
+        {status === "booked" &&
+          <a 
+            className="btn btn-secondary" 
+            id="seatButton"
+            href={`/reservations/${reservation_id}/seat`} 
+            role="button">
+            Seat
+          </a>
+        }
+
+        <h5><span 
+          className="badge bg-info text-light"
+          id="statusBadge"
+          data-reservation-id-status={reservation_id}>
+            {status}
+        </span></h5>
         Reservation #{reservation_id}
       </div>
     </div>
