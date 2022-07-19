@@ -1,0 +1,15 @@
+#resCardFooter {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+}
+
+#statusBadge {
+    padding: 15px 25px;
+    margin-top: 7.5px;
+    text-transform: uppercase;
+    font-weight: normal;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
