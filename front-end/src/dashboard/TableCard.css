@@ -17,3 +17,7 @@
   margin-bottom: 0px;
   text-align: center;
 }
+
+#finishButton {
+  border: none;
+}
