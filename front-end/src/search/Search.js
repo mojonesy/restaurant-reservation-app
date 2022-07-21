@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ReservationsList from "../reservations/ReservationsList";
 import ErrorAlert from "../layout/ErrorAlert";
+import { listReservations } from "../utils/api";
 import "./Search.css";
 
 function Search() {
@@ -16,8 +17,11 @@ function Search() {
   // Handle find //
   const handleFind = (event) => {
     event.preventDefault();
-    // run api function
-    // set reservations
+    console.log(mobile);
+    // Does this work?
+    listReservations({ mobile })
+      .then((reservations) => setReservations(reservations))
+      .catch((error) => setError(error));
   }
 
   return (
@@ -51,7 +55,11 @@ function Search() {
 
     {/* Reservations */}
     <div className="reservationsList">
+      {reservations ? 
         <ReservationsList reservations={reservations} />
+        :
+        "No reservations found"
+      }
     </div>
 
     </main>
