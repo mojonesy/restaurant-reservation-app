@@ -81,7 +81,7 @@ function Dashboard({ date }) {
                 capacity={table.capacity}
                 reservation_id={table.reservation_id}
                 setTablesError={setTablesError}
-                loadReservations={loadReservations}
+                loadReservationsAndTables={loadReservationsAndTables}
               />
             </div>
           ))}
