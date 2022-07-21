@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { listReservations, listTables } from "../utils/api";
-import ReservationCard from "./ReservationCard";
+import ReservationsList from "../reservations/ReservationsList";
 import TableCard from "./TableCard";
 import DateNavButtons from "./DateNavButtons";
 import ErrorAlert from "../layout/ErrorAlert";
@@ -59,21 +59,8 @@ function Dashboard({ date }) {
         <ErrorAlert error={reservationsError} setError={setReservationsError} />
 
         {/* Reservations */}
-        <div id="reservationGrid" className="row row-cols-3">
-          {reservations.map((reservation) => (
-            <div className="col-sm" key={reservation.reservation_id}>
-              <ReservationCard
-                reservation_id={reservation.reservation_id}
-                first_name={reservation.first_name}
-                last_name={reservation.last_name}
-                mobile_number={reservation.mobile_number}
-                reservation_date={reservation.reservation_date}
-                reservation_time={reservation.reservation_time}
-                people={reservation.people}
-                status={reservation.status}
-              />
-            </div>
-          ))}
+        <div className="reservationsList">
+          <ReservationsList reservations={reservations} />
         </div>
 
         <div className="dateNav" style={{marginBottom: "17px"}}>
