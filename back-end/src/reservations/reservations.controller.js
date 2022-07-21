@@ -4,10 +4,14 @@ const { today } = require("../utils/date-time");
 
 /**
  * List handler for reservation resources
+ *  Lists reservations by query data, query mobile_number, or today's date
  */
 async function list(req, res) {
   if (req.query.date) {
     const data = await service.list(req.query.date);
+    res.json({ data });
+  } else if (req.query.mobile_number) {
+    const data = await service.search(req.query.mobile_number);
     res.json({ data });
   } else {
     const data = await service.list(today());
