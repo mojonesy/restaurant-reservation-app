@@ -94,6 +94,19 @@ export async function readReservation(reservation_id, signal) {
   return await fetchJson(url, { signal }, []);
 }
 
+/**
+ * Removes current reservation_id from table.
+ * Does not return anything.
+ */
+export async function removeReservation(table_id, signal){
+  const url = `${API_BASE_URL}/tables/${table_id}/seat`;
+  const options = {
+    method: "DELETE",
+    signal
+  };
+  return await fetchJson(url, options);
+}
+
 
 /**
  * Retrieves all existing tables.
@@ -143,18 +156,4 @@ export async function updateTable(reservation_id, table_id, updatedTable, signal
     body: JSON.stringify({ data: { reservation_id: reservation_id } }),
   };
   return await fetchJson(url, options, updatedTable);
-}
-
-
-/**
- * Removes current reservation_id from table.
- * Does not return anything.
- */
-export async function removeReservation(table_id, signal){
-  const url = `${API_BASE_URL}/tables/${table_id}/seat`;
-  const options = {
-    method: "DELETE",
-    signal
-  };
-  return await fetchJson(url, options);
 }
