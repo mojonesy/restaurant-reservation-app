@@ -18,6 +18,12 @@
   text-align: center;
 }
 
+#statusWithFinishButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 #finishButton {
   border: none;
 }
