@@ -96,6 +96,7 @@ export async function readReservation(reservation_id, signal) {
 
 /**
  * Removes current reservation_id from table.
+ * Changes given reservation status to "finished."
  * Does not return anything.
  */
 export async function removeReservation(table_id, signal){
@@ -105,6 +106,39 @@ export async function removeReservation(table_id, signal){
     signal
   };
   return await fetchJson(url, options);
+}
+
+/**
+ * Updates existing reservation.
+ * 
+ * @param updatedReservation
+ *  the reservation to update, which must have a 'id' property.
+ * @returns {Promise<[reservation]>}
+ *  a promise that resolves to the updated reservation.
+ */
+export async function updateReservation(updatedReservation, signal) {
+  const url = `${API_BASE_URL}/reservations/${updatedReservation.reservation_id}`;
+  const options = {
+    method: "PUT",
+    headers,
+    body: JSON.stringify({data: updatedReservation }),
+  };
+  return await fetchJson(url, options, updatedReservation);
+}
+
+/**
+ * Changes given reservation status to "cancelled."
+ * @returns {Promise<[reservation]>}
+ *  a promise that resolves to the updated reservation, which will now have a status of "cancelled".
+ */
+export async function cancelReservation(reservation_id, status, signal) {
+  const url = `${API_BASE_URL}/reservations/${reservation_id}/status`;
+  const options = {
+    method: "PUT",
+    headers,
+    body: JSON.stringify({data: { status: status } }),
+  };
+  return await fetchJson(url, options, { status })
 }
 
 
