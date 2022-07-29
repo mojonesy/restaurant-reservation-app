@@ -60,7 +60,11 @@ function Dashboard({ date }) {
 
         {/* Reservations */}
         <div className="reservationsList">
-          <ReservationsList reservations={reservations} />
+          <ReservationsList 
+            reservations={reservations}
+            setReservationsError={setReservationsError}
+            loadReservationsAndTables={loadReservationsAndTables} 
+          />
         </div>
 
         <div className="dateNav" style={{marginBottom: "17px"}}>
