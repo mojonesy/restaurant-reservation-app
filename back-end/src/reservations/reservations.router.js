@@ -3,7 +3,7 @@ const controller = require("./reservations.controller");
 const methodNotAllowed = require("../errors/methodNotAllowed");
 
 router.route("/:reservation_id/status")
-  .put(controller.update)
+  .put(controller.updateStatus)
   .all(methodNotAllowed);
 
 router.route("/:reservation_id")
