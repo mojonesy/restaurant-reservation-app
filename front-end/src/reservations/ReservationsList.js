@@ -1,7 +1,7 @@
 import React from "react";
 import ReservationCard from "./ReservationCard";
 
-function ReservationsList({ reservations }) {
+function ReservationsList({ reservations, setReservationsError, loadReservationsAndTables }) {
 
   return (
     <div id="reservationGrid" className="row row-cols-3">
@@ -13,9 +13,11 @@ function ReservationsList({ reservations }) {
               last_name={reservation.last_name}
               mobile_number={reservation.mobile_number}
               reservation_date={reservation.reservation_date}
-              reservation_time={reservation.reservation_time}
+              reservation_time={reservation.reservation_time.slice(0, 5)}
               people={reservation.people}
               status={reservation.status}
+              setReservationsError={setReservationsError}
+              loadReservationsAndTables={loadReservationsAndTables}
             />
           </div>
       ))}
