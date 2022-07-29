@@ -1,4 +1,5 @@
 import React from "react";
+import CancelReservationButton from "./CancelReservationButton";
 import "./ReservationCard.css";
 
 function ReservationCard({ 
@@ -21,11 +22,14 @@ function ReservationCard({
         <h6 className="card-subtitle mb-2 text-muted">Guests: {people}</h6>
         <h6 className="card-subtitle mb-2 text-muted">Mobile Number: {mobile_number}</h6>
       </div>
+
       <div 
         className="card-footer border-secondary text-secondary"
         id="resCardFooter"
-        style={{textAlign: "right"}}>
+        style={{textAlign: "right"}}
+        >
         
+        {/* Seat Button */}
         {status === "booked" &&
           <a 
             className="btn btn-secondary" 
@@ -36,13 +40,16 @@ function ReservationCard({
           </a>
         }
 
+        {/* Status Badge */}
         <h5><span 
           className="badge bg-info text-light"
           id="statusBadge"
           data-reservation-id-status={reservation_id}>
             {status}
         </span></h5>
-        Reservation #{reservation_id}
+
+        {/* Cancel Reservation Button */}
+        <CancelReservationButton reservation_id={reservation_id} />
       </div>
     </div>
   );
