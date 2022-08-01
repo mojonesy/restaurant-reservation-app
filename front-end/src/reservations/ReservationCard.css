@@ -1,3 +1,7 @@
+.card-header .btn {
+    padding: 2px 15px;
+}
+
 #resCardFooter {
     display: inline-flex;
     justify-content: space-between;
