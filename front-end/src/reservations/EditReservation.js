@@ -28,18 +28,15 @@ function EditReservation() {
    
   const handleSubmit = (event) => {
     event.preventDefault();
-    try {
       updateReservation(reservation)
-        .then(history.go(-1));
-    } catch (error) {
-      setError(error);
-    }
+        .then(history.go(-1))
+        .catch((error) => setError(error));
   };
 
 
   return (
     <main>
-      <div className="d-md-flex mb-3">
+      <div className="d-md-flex mb-3 flex-column">
         <h1>Edit Reservation</h1>
         <ErrorAlert error={error} setError={setError} />
       </div>
