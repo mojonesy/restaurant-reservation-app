@@ -120,6 +120,8 @@ export async function removeReservation(table_id, signal){
  */
 export async function updateReservation(updatedReservation, signal) {
   const url = `${API_BASE_URL}/reservations/${updatedReservation.reservation_id}`;
+  updatedReservation.people = Number(updatedReservation.people);
+  updatedReservation.reservation_time = updatedReservation.reservation_time.slice(0, 5);
   const options = {
     method: "PUT",
     headers,
