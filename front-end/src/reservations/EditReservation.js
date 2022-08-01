@@ -29,7 +29,8 @@ function EditReservation() {
   const handleSubmit = (event) => {
     event.preventDefault();
       updateReservation(reservation)
-        .then(history.go(-1))
+      // Need to slice returned date/time to only display date, because API returns full date/time string
+        .then(() => history.push(`/dashboard?date=${reservation.reservation_date.slice(0, 10)}`))
         .catch((error) => setError(error));
   };
 
