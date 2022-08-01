@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 import { removeReservation } from "../utils/api";
 import "./TableCard.css";
 
@@ -11,14 +12,20 @@ function TableCard({
   loadReservationsAndTables,
 }) {
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const handleFinish = (event) => {
     event.preventDefault();
-    const message = "Is this table ready to seat new guests? This cannot be undone.";
-    if (window.confirm(message)) {
+    // const message = "Is this table ready to seat new guests? This cannot be undone.";
+    // if (window.confirm(message)) {
       removeReservation(table_id)
         .then(() => loadReservationsAndTables())
+        .then(handleClose)
         .catch(setTablesError);
-    }
+    // }
   }
 
 
@@ -41,7 +48,7 @@ function TableCard({
               type="button" 
               className="btn btn-dark"
               id="finishButton"
-              onClick={handleFinish}
+              onClick={handleShow}
               data-table-id-finish={table_id}
               >
                 Finish
@@ -50,31 +57,25 @@ function TableCard({
         </div>
       </div>
     </div>
+
+   {/* Modal */}
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header>
+          <Modal.Title>Is this table ready to seat new guests?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>This cannot be undone.</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleFinish}>
+            Ok
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
     </>
   );
 }
 
 export default TableCard;
-
-
-
-/* This isn't working, but want to try again later */
-
-  // {/* Modal */}
-  // {reservation_id &&
-  //   <div className="modal fade" id="finishSeatModal" tabIndex={-1} aria-labelledby="finishSeatModal" aria-hidden="true">
-  //     <div className="modal-dialog modal-dialog-centered">
-  //       <div className="modal-content">
-  //         <div className="modal-header">
-  //           <h5 className="modal-title" id="finishSeatModal">Is this table ready to seat new guests?</h5>
-  //         </div>
-  //         <div className="modal-body">
-  //           This cannot be undone.
-  //         </div>
-  //         <div className="modal-footer">
-  //           <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-  //           <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={handleOk}>Ok</button>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </div>}
