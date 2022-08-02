@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Khula&display=swap');
+
+body {
+    background-color: white;
+    box-sizing: border-box;
+    font-family: 'Khula', sans-serif;
+}
+
+h1 {
+    font-weight: 900;
+    font-size: 3em;
+    letter-spacing: 2px;
+}
