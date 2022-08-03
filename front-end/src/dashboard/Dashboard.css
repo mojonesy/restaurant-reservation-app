@@ -1,10 +1,14 @@
+h1, h2 {
+  text-align: right;
+}
+
 .reservations-list {
   background-color: rgb(7, 66, 77, 0.9);
   border: none;
   border-radius: 15px;
   filter: drop-shadow(10px 12px 0.75rem #07434dc4);
-  padding: 10px;
-  margin-bottom: 20px;
+  padding: 20px;
+  margin-bottom: 40px;
 }
 
 .reservations-list h4 {
@@ -13,8 +17,7 @@
 }
 
 .reservations-list .card {
-  border: none;
-  border-radius: 10px;
+  max-width: 20rem;
 }
 
 .reservations-list .card-header {
@@ -22,11 +25,17 @@
 }
 
 
+.btn-toolbar {
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+
 .tables-list {
   background-color: rgb(255, 89, 88, 0.9);
   border-radius: 15px;
   filter: drop-shadow(10px 12px 0.75rem #d84949d2);
-  padding: 10px;
+  padding: 20px;
 }
 
 .tables-list h4 {
@@ -35,4 +44,5 @@
 
 .tables-list .card {
   border: none;
+  margin: 5px 3px;
 }
