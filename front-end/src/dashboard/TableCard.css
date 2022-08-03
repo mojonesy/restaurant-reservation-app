@@ -4,6 +4,10 @@
   margin-bottom: 10px;
 }
 
+#tableGrid .col-sm {
+  padding: 0px 7px;
+}
+
 /* Mel - help with position of badge to stay inside card */
 #tableGrid .badge {
   position: absolute;
@@ -20,10 +24,15 @@
 
 #statusWithFinishButton {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
 
 #finishButton {
+  margin-top: 10px;
+  padding: 5px 20px;
+  background-color: #1F2A38;
+  color: white;
   border: none;
 }
