@@ -17,7 +17,7 @@ function ReservationCard({
 
     
   return (
-    <div className="card border-secondary mb-3" style={{maxWidth: "25rem"}}>
+    <div className="card h-100 w-100 border-secondary mb-3">
       <h4 className="card-header d-flex justify-content-between align-items-center">
         {last_name}, {first_name}
         {status === "booked" && <a 
@@ -52,7 +52,7 @@ function ReservationCard({
 
         {/* Status Badge */}
         <h5><span 
-          className="badge bg-info text-light"
+          className="badge text-light"
           id="statusBadge"
           data-reservation-id-status={reservation_id}>
             {status}
