@@ -33,7 +33,7 @@ function TableCard({
     <>
     <div className="card">
       <div className="card-body">
-        <span className="badge bg-info">{capacity}</span>
+        <span className="badge">{capacity}</span>
         <h6 className="card-title">{table_name}</h6>
         <p className="card-subtitle mb-2 text-muted">Reservation {reservation_id}</p>
         <div 
