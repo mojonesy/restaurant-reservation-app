@@ -46,7 +46,7 @@ function TableCard({
           {reservation_id && 
             <button 
               type="button" 
-              className="btn btn-dark"
+              className="btn"
               id="finishButton"
               // Use handleShow here for modal
               onClick={handleFinish}
