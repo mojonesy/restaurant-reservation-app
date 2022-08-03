@@ -1,0 +1,39 @@
+.reservations-list {
+  background-color: #07424D;
+  border: 2px solid #07424D;
+  border-radius: 15px;
+  filter: drop-shadow(10px 12px 0.75rem #07434dc4);
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.reservations-list h4 {
+  color: #F8F8F4;
+
+}
+
+.reservations-list .card {
+  border: none;
+  border-radius: 10px;
+}
+
+.reservations-list .card-header {
+  color: #1F2A38;
+}
+
+
+.tables-list {
+  background-color: #FF5958;
+  border: 2px solid #FF5958;
+  border-radius: 15px;
+  filter: drop-shadow(10px 12px 0.75rem #d84949d2);
+  padding: 10px;
+}
+
+.tables-list h4 {
+  color: #F8F8F4;
+}
+
+.tables-list .card {
+  border: none;
+}
