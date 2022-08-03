@@ -1,19 +1,32 @@
-.card-header .btn {
+.reservation-card
+.card-header 
+.btn {
     padding: 2px 15px;
 }
 
+.reservation-card {
+    margin-top: 10px;
+}
+
+.reservation-card
+.card-body {
+    padding-bottom: 5px;
+}
+
 #resCardFooter {
+    border: none;
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 20px;
+    padding: 5px 10px;
 }
 
 #statusBadge {
-    padding: 15px 25px;
+    background-color: #34b3b5e3;
+    border-radius: 20px;
+    padding: 15px 20px;
     margin-top: 7.5px;
     text-transform: uppercase;
     font-weight: normal;
     letter-spacing: 1px;
-    opacity: 0.8;
 }
