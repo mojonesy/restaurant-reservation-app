@@ -15,15 +15,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use(function (req, res, next) {
-    if (req.path.substring(-1) == '/' && req.path.length > 1) {
-      let query = req.url.slice(req.path.length)
-      res.redirect(301, req.path.slice(0, -1) + query)
-    } else {
-      next()
-    }
-  });
-
 app.use("/reservations", reservationsRouter);
 app.use("/tables", tablesRouter);
 
