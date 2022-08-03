@@ -68,7 +68,7 @@ function Dashboard({ date }) {
           />
         </div>
 
-        <div className="dateNav" style={{marginBottom: "17px"}}>
+        <div className="date-nav">
           <DateNavButtons currentDate={date} />
         </div>
 
@@ -78,9 +78,9 @@ function Dashboard({ date }) {
             <h4 className="mb-0">Tables</h4>
           </div>
           <ErrorAlert error={tablesError} setError={setTablesError} />
-          <div id="tableGrid" className="row row-cols-4">
+          <div id="tableGrid" className="row row-cols-2">
             {tables.map((table) => (
-              <div className="col-sm-3" key={table.table_id}>
+              <div className="col-sm" key={table.table_id}>
                 <TableCard
                   table_id={table.table_id}
                   table_name={table.table_name}
