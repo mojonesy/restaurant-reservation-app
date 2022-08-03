@@ -1,0 +1,18 @@
+@media (max-width: 50em) {
+  .sidebar-brand-text {
+    font-size: 1.5em;
+  }
+
+  #accordionSidebar {
+    justify-content: space-around;
+  }
+
+  .navbar-nav {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .nav-item {
+    padding: 8.5px 8.5px;
+  }
+}
