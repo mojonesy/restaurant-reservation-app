@@ -35,12 +35,16 @@ h1 {
     color: #1F2A38;
 }
 
+h2 {
+    color: #1F2A38;
+}
+
 .card {
     background-color: #F8F8F4;
 }
 .card-header,
 .card-footer {
-    background-color: #1F2A3810;
+    background-color: #F8F8F4;
 }
 
 .btn-group {
@@ -49,6 +53,6 @@ h1 {
 }
 
 .badge {
-    background-color: #FF5958;
+    background-color: #07424D;
     color: white;
 }
