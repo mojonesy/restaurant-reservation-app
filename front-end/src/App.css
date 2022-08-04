@@ -51,6 +51,10 @@ h2 {
     background-color: #F8F8F4;
 }
 
+.btn {
+  padding: 7px 15px 4px;
+}
+
 .btn-group {
     background-color: #1F2A38;
     border-radius: 10px;
@@ -79,9 +83,9 @@ h2 {
 @media (max-width: 50em) {
   body {
     background-image: url('https://api.iconify.design/uil/restaurant.svg?color=%231f2a38');
-    background-size: 800px;
+    background-size: 600px;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center -350%;
+    background-position: center 250%;
   }
 }
