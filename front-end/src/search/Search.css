@@ -1,3 +1,15 @@
 #mobileSearchBox {
-    max-width: 50%;
+  max-width: 60%;
+}
+
+#mobileSearchBox 
+.btn {
+  color: #F8F8F4;
+  background-color: #1F2A38;
+}
+
+@media (max-width: 50em) {
+  #mobileSearchBox {
+    min-width: 100%;
+  }
 }
