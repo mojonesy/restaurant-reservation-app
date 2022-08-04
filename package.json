@@ -52,5 +52,8 @@
     "bootstrap": "^5.1.3",
     "knex": "^2.1.0",
     "react-bootstrap": "^2.4.0"
+  },
+  "devDependencies": {
+    "@iconify/react": "^3.2.2"
   }
 }
