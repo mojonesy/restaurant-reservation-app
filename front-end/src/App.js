@@ -8,7 +8,6 @@ import "./App.css";
  * @returns {JSX.Element}
  */
 function App() {
-  console.log(process.env.REACT_APP_API_BASE_URL);
   return (
     <Switch>
       <Route path="/">
