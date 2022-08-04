@@ -8,8 +8,12 @@
   padding: 0px 7px;
 }
 
-/* Mel - help with position of badge to stay inside card */
-#tableGrid .badge {
+.capacity-badge {
+  padding-top: 5px;
+  width: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: absolute;
   top: 12px;
   right: 12px;
