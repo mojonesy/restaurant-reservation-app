@@ -13,8 +13,11 @@
 */ 
 
 body {
-    background-color: white;
     box-sizing: border-box;
+    background-image: url('https://api.iconify.design/uil/restaurant.svg?color=%231f2a38');
+    background-size: 800px;
+    background-repeat: no-repeat;
+    background-position: 25% 220%;
     font-family: 'Khula', sans-serif;
 }
 
@@ -55,4 +58,15 @@ h2 {
 .badge {
     background-color: #07424D;
     color: white;
+}
+
+
+/* Media query for tablet at portrait view */
+@media (max-width: 50em) {
+  body {
+    background-image: url('https://api.iconify.design/uil/restaurant.svg?color=%231f2a38');
+    background-size: 800px;
+    background-repeat: no-repeat;
+    background-position: 80% 45%;
+  }
 }
