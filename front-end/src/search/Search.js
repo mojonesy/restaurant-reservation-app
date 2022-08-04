@@ -26,7 +26,7 @@ function Search() {
 
   return (
     <main>
-      <div className="d-md-flex mb-3">
+      <div className="d-md-flex mb-3 justify-content-start">
         <h1>Reservation Search</h1>
         <ErrorAlert error={error} setError={setError} />
       </div>
@@ -44,7 +44,7 @@ function Search() {
           aria-describedby="button-addon2" 
         />
         <button 
-          className="btn btn-outline-secondary" 
+          className="btn" 
           type="submit" 
           id="button-addon2"
           onClick={handleFind} 
