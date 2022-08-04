@@ -51,7 +51,7 @@ function Dashboard({ date }) {
 
 
     return (
-      <main>
+      <main className="dashboard">
         <h1>Dashboard</h1>
         <div className="d-md-flex flex-column">
           {!reservations.length && <h2>No reservations on this date.</h2>}
