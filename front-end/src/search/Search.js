@@ -9,6 +9,7 @@ function Search() {
 
   const [mobile_number, setMobileNumber] = useState("");
   const [reservations, setReservations] = useState([]);
+  const [reservationMessage, setReservationMessage] = useState("");
 
   // Change handler //
   const handleChange = ({ target }) => {
@@ -19,6 +20,7 @@ function Search() {
     event.preventDefault();
     listReservations({ mobile_number })
       .then((reservations) => setReservations(reservations))
+      .then(setReservationMessage("No reservations found"))
       .catch((error) => setError(error));
   }
 
@@ -56,7 +58,7 @@ function Search() {
       {reservations.length ? 
         <ReservationsList reservations={reservations} />
         :
-        <h3>No reservations found</h3>
+        <h3>{reservationMessage}</h3>
       }
     </div>
 
