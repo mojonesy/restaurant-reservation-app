@@ -14,12 +14,17 @@
 
 body {
     box-sizing: border-box;
-    background-image: url('https://api.iconify.design/uil/restaurant.svg?color=%231f2a38');
+    background: linear-gradient(rgba(250, 250, 250, 0.1),
+      rgba(250, 250, 250, 0.1)), url('https://api.iconify.design/uil/restaurant.svg?color=%231f2a38');
     background-size: 800px;
     background-repeat: no-repeat;
-    background-position: 100% -80%;
+    background-position: top 50px right 20px;
     background-attachment: fixed;
     font-family: 'Khula', sans-serif;
+}
+
+.container-fluid .side-bar {
+  height: 100vh;
 }
 
 .side-bar {
@@ -65,13 +70,15 @@ h2 {
     color: white;
 }
 
-.form-control {
+.form-control,
+.selections {
     opacity: 0.85;
     margin-bottom: 8px;
     filter: drop-shadow(5px -2px 0.65rem #1F2A38);
 }
 
-.form-label {
+.form-label,
+.table-select {
   background-color: white;
   padding: 2px 5px;
   border-radius: 5px;
@@ -82,10 +89,15 @@ h2 {
 /* Media query for tablet at portrait view */
 @media (max-width: 50em) {
   body {
-    background-image: url('https://api.iconify.design/uil/restaurant.svg?color=%231f2a38');
-    background-size: 600px;
+    background: linear-gradient(rgba(250, 250, 250, 0.1),
+      rgba(250, 250, 250, 0.1)), url('https://api.iconify.design/uil/restaurant.svg?color=%231f2a38');
+    background-size: 100%;
     background-repeat: no-repeat;
+    background-position: top 300px right -10px;
     background-attachment: fixed;
-    background-position: center 250%;
+  }
+
+  .container-fluid .side-bar {
+    height: min-content;
   }
 }
