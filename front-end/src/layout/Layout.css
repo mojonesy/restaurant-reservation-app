@@ -7,9 +7,3 @@
 .main-body {
   margin: 15px 5px;
 }
-
-@media (max-width: 50em) {
-  .side-bar {
-    height: auto;
-  }
-}
