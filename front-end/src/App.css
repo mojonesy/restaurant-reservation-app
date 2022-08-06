@@ -12,6 +12,7 @@
     White: #F8F8F4
 */ 
 
+
 body {
     box-sizing: border-box;
     background: linear-gradient(rgba(250, 250, 250, 0.1),
@@ -87,7 +88,7 @@ h2 {
 
 
 /* Media query for tablet at portrait view */
-@media (max-width: 50em) {
+@media (max-width: 45em) {
   body {
     background: linear-gradient(rgba(250, 250, 250, 0.1),
       rgba(250, 250, 250, 0.1)), url('https://api.iconify.design/uil/restaurant.svg?color=%231f2a38');
@@ -98,6 +99,6 @@ h2 {
   }
 
   .container-fluid .side-bar {
-    height: min-content;
+    height: 160px;
   }
 }
