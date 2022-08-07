@@ -33,6 +33,7 @@ function Seat() {
     loadReservation();
   }, [reservation_id]);
 
+
   // Handle table selection //
   const handleChange = ({ target }) => {
     setSelectedTable({ ...selectedTable, [target.name]: target.value });
@@ -67,31 +68,27 @@ function Seat() {
           <select 
             name="table_id" 
             id="table-select"
-            onChange={handleChange}
-          >
-            <option value="">- Please choose a table -</option>
-            {tables.map((table) => (
-              <option value={table.table_id} key={table.table_name}>
-                {table.table_name} - {table.capacity}
-              </option>
-            ))}
+            onChange={handleChange}>
+          <option value="">- Please choose a table -</option>
+          {tables.map((table) => (
+            <option value={table.table_id} key={table.table_name}>
+              {table.table_name} - {table.capacity}
+            </option>
+          ))}
           </select>
         </div>
 
-        <div className="form-buttons" style={{marginTop: "10px"}}>
+        <div className="form-buttons">
           <button 
             type="submit"
-            className="btn btn-primary btn-lg"
-            style={{marginRight: "10px"}}
-          >
-            Submit
+            className="btn btn-primary btn-lg">
+              Submit
           </button>
           <button
             type="button"
             className="btn btn-secondary btn-lg"
-            onClick={() => history.go(-1)}
-          >
-            Cancel
+            onClick={() => history.go(-1)}>
+              Cancel
           </button>
         </div>
 

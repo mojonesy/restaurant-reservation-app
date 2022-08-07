@@ -47,13 +47,12 @@ function Search() {
           className="btn" 
           type="submit" 
           id="button-addon2"
-          onClick={handleFind} 
-        >
-          Find
+          onClick={handleFind}>
+            Find
         </button>
       </div>
 
-    {/* Reservations */}
+    {/* Reservations - displays "No reservations found" if length is zero */}
     <div className="reservationsList">
       {reservations.length ? 
         <ReservationsList reservations={reservations} />
