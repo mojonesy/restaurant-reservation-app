@@ -13,7 +13,7 @@ import "./Layout.css";
  */
 function Layout() {
   return (
-    <div className="container-fluid">
+    <div className="container-fluid d-flex flex-column">
       <div className="row h-100">
         <div className="col-md-2 side-bar">
           <Menu />
