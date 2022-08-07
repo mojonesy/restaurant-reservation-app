@@ -12,6 +12,7 @@ function TableCard({
   loadReservationsAndTables,
 }) {
 
+  // Finishes reservation and removes reservation id from table //
   const handleFinish = (event) => {
     event.preventDefault();
     const message = "Is this table ready to seat new guests? This cannot be undone.";
