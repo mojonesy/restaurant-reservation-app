@@ -24,8 +24,9 @@ body {
   font-family: 'Khula', sans-serif;
 }
 
+/* Side bar spans height of page */
 .container-fluid .side-bar {
-  height: 100vh;
+  padding-bottom: 100%;
 }
 
 .side-bar {
@@ -101,6 +102,7 @@ h2 {
   }
 
   .container-fluid .side-bar {
-    height: 160px;
+    height: 140px;
+    padding-bottom: 0px;
   }
 }
