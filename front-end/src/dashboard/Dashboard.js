@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { listReservations, listTables } from "../utils/api";
 import ReservationsList from "../reservations/ReservationsList";
-import TableCard from "./TableCard";
+import TablesList from "../tables/TablesList";
 import DateNavButtons from "./DateNavButtons";
 import ErrorAlert from "../layout/ErrorAlert";
 import "./Dashboard.css";
@@ -79,20 +79,11 @@ function Dashboard({ date }) {
             <h4 className="mb-0">Tables</h4>
           </div>
           <ErrorAlert error={tablesError} setError={setTablesError} />
-          <div id="tableGrid" className="row row-cols-2">
-            {tables.map((table) => (
-              <div className="col-sm" key={table.table_id}>
-                <TableCard
-                  table_id={table.table_id}
-                  table_name={table.table_name}
-                  capacity={table.capacity}
-                  reservation_id={table.reservation_id}
-                  setTablesError={setTablesError}
-                  loadReservationsAndTables={loadReservationsAndTables}
-                />
-              </div>
-            ))}
-          </div>
+          <TablesList 
+            tables={tables}
+            setTablesError={setTablesError}
+            loadReservationsAndTables={loadReservationsAndTables} 
+          />
         </div>
       </main>
     );
