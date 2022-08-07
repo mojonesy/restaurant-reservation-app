@@ -21,6 +21,10 @@
   font-size: small;
 }
 
+.people-icon {
+  margin-bottom: 4px;
+}
+
 #tableGrid .alert {
   margin-bottom: 0px;
   text-align: center;
