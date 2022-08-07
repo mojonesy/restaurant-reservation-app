@@ -39,7 +39,7 @@ function Seat() {
     setSelectedTable({ ...selectedTable, [target.name]: target.value });
   }
 
-  // Submit and send PUT request to update table //
+  // Submit and send PUT request in order to seat reservation and update table //
   const handleSubmit = (event) => {
     event.preventDefault();
     updateTable(reservation_id, selectedTable.table_id, selectedTable)
