@@ -176,7 +176,7 @@ export async function createTable(table, signal) {
 
 
 /**
- * Updates chosen table with given reservation_id
+ * "Seats" a reservation - Updates chosen table with given reservation_id
  * 
  * @param reservation_id
  * reservation_id to add to table - specified in body for tests to pass 
