@@ -2,3 +2,11 @@
 h4 {
   max-width: 70%;
 }
+
+.form-buttons {
+  margin-top: 10px;
+}
+
+.form-buttons .btn {
+  margin-right: 10px;
+}
