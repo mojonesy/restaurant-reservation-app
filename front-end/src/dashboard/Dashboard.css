@@ -3,6 +3,9 @@ h1, h2 {
   text-align: right;
 }
 
+
+/* Reservation Cards */
+
 .reservations-list {
   background-color: rgb(7, 66, 77, 0.75);
   border: none;
@@ -26,11 +29,14 @@ h1, h2 {
 }
 
 
+/* Button Toolbar Nav */
 .btn-toolbar {
   justify-content: center;
   margin-bottom: 30px;
 }
 
+
+/* Table Cards */
 
 .tables-list {
   background-color: rgb(255, 89, 88, 0.75);
