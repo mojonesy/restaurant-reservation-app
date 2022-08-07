@@ -38,26 +38,25 @@ function TableCard({
           <Icon className="people-icon" icon="bi:people" color="#f8f8f4" />
           {capacity}
         </span>
+
         <h6 className="card-title">{table_name}</h6>
         <p className="card-subtitle mb-2 text-muted">Reservation {reservation_id}</p>
         <div 
           className={`alert ${reservation_id ? "alert-warning" : "alert-success"}`} 
           id="statusWithFinishButton"
           role="alert" 
-          data-table-id-status={table_id}
-        >
-          {reservation_id ? "Occupied" : "Free"}
-          {reservation_id && 
-            <button 
-              type="button" 
-              className="btn"
-              id="finishButton"
-              // Use handleShow here for modal
-              onClick={handleFinish}
-              data-table-id-finish={table_id}
-              >
-                Finish
-              </button>
+          data-table-id-status={table_id}>
+            {reservation_id ? "Occupied" : "Free"}
+            {reservation_id && 
+              <button 
+                type="button" 
+                className="btn"
+                id="finishButton"
+                // Use handleShow here for modal
+                onClick={handleFinish}
+                data-table-id-finish={table_id}>
+                  Finish
+                </button>
             }
         </div>
       </div>

@@ -10,10 +10,12 @@ function DateNavButtons({ currentDate }) {
     event.preventDefault();
     history.push(`/dashboard?date=${previous(currentDate)}`);
   }
+  
   const handleToday = (event) => {
     event.preventDefault();
     history.push(`/dashboard?date=${today()}`);
   }
+
   const handleNext = (event) => {
     event.preventDefault();
     history.push(`/dashboard?date=${next(currentDate)}`);
@@ -26,20 +28,20 @@ function DateNavButtons({ currentDate }) {
       <button 
         type="button" 
         className="btn btn-outline-light"
-        onClick={handlePrevious}
-        >Previous
+        onClick={handlePrevious}>
+          Previous
       </button>
       <button 
         type="button" 
         className="btn btn-outline-light"
-        onClick={handleToday}
-        >Today
+        onClick={handleToday}>
+          Today
       </button>
       <button 
         type="button" 
         className="btn btn-outline-light"
-        onClick={handleNext}
-        >Next
+        onClick={handleNext}>
+          Next
       </button>
      </div>
     </div>

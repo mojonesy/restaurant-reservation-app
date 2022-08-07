@@ -68,6 +68,7 @@ function Dashboard({ date }) {
           />
         </div>
 
+        {/* Button Toolbar */}
         <div className="date-nav">
           <DateNavButtons currentDate={date} />
         </div>
