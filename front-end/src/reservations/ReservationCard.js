@@ -17,7 +17,7 @@ function ReservationCard({
 
     
   return (
-    <div className="card h-100 w-100 border-secondary mb-3">
+    <div className="card h-100 w-100 mb-3">
       <h4 className="card-header d-flex justify-content-between align-items-center">
         {last_name}, {first_name}
         {status === "booked" && <a 
