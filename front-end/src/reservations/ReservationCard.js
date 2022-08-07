@@ -23,11 +23,11 @@ function ReservationCard({
         {status === "booked" && <a 
           type="button" 
           className="btn btn-outline-secondary"
-          href={`/reservations/${reservation_id}/edit`}
-        >
-          Edit
-        </a>}
+          href={`/reservations/${reservation_id}/edit`}>
+            Edit
+          </a>}
       </h4>
+
       <div className="card-body">
         <h5 className="card-title">{reservation_time}, {reservation_date}</h5>
         <h6 className="card-subtitle mb-2 text-muted">Guests: {people}</h6>
@@ -36,9 +36,7 @@ function ReservationCard({
 
       <div 
         className="card-footer border-secondary text-secondary"
-        id="resCardFooter"
-        style={{textAlign: "right"}}
-        >
+        id="resCardFooter">
         
         {/* Seat Button */}
         {status === "booked" &&
@@ -51,12 +49,14 @@ function ReservationCard({
           </a>}
 
         {/* Status Badge */}
-        <h5><span 
-          className="badge text-light"
-          id="statusBadge"
-          data-reservation-id-status={reservation_id}>
-            {status}
-        </span></h5>
+        <h5>
+          <span 
+            className="badge text-light"
+            id="statusBadge"
+            data-reservation-id-status={reservation_id}>
+              {status}
+          </span>
+        </h5>
 
         {/* Cancel Reservation Button */}
         {status !== "cancelled" &&

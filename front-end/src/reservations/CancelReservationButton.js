@@ -29,9 +29,8 @@ function CancelReservationButton({ reservation_id, setReservationsError, loadRes
         className="btn btn-danger"
         // Use handleShow here for modal
         onClick={handleOk}
-        data-reservation-id-cancel={reservation_id}
-      >
-        Cancel
+        data-reservation-id-cancel={reservation_id}>
+          Cancel
       </button>
 
       {/* Modal */}
