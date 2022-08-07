@@ -1,3 +1,9 @@
+.reservation-card .card,
+.reservation-card .card-header,
+.reservation-card .card-footer {
+  border-radius: 15px;
+}
+
 .reservation-card
 .card-header 
 .btn {
