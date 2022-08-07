@@ -1,3 +1,7 @@
+.container-fluid .side-bar {
+  height: 100vh;
+}
+
 form
 .btn {
   margin-top: 5px;
