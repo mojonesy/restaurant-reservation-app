@@ -19,8 +19,8 @@ body {
       rgba(250, 250, 250, 0.1)), url('https://api.iconify.design/uil/restaurant.svg?color=%231f2a38');
     background-size: 800px;
     background-repeat: no-repeat;
-    background-position: top 50px right 20px;
-    background-attachment: fixed;
+    background-position: top 45px right 20px;
+    background-attachment: scroll;
     font-family: 'Khula', sans-serif;
 }
 
@@ -29,11 +29,13 @@ body {
 }
 
 .side-bar {
-    background-color: #1F2A38;
+  background-color: #1F2A38;
 }
+
 .sidebar-brand-text {
-    color: #F8F8F4;
+  color: #F8F8F4;
 }
+
 .navbar-dark .navbar-nav .nav-link {
     color: #aeb4bc;
 }
@@ -95,7 +97,7 @@ h2 {
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: top 300px right -10px;
-    background-attachment: fixed;
+    background-attachment: scroll;
   }
 
   .container-fluid .side-bar {
