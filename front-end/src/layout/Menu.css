@@ -14,6 +14,11 @@
   }
 
   .nav-item {
-    padding: 4px 8.5px;
+    padding: 2px 8.5px;
+  }
+
+  .navbar-nav
+  .nav-link {
+    padding: 2px 
   }
 }
