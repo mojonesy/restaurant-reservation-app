@@ -26,10 +26,14 @@ function CreateReservation() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createReservation(reservation)
+
+    const abortController = new AbortController();
+    createReservation(reservation, abortController.signal)
     // Need to slice returned date/time to only display date, because API returns full date/time string
       .then((newReservation) => history.push(`/dashboard?date=${newReservation.reservation_date.slice(0, 10)}`))
       .catch((error) => setError(error));
+    
+    return () => abortController.abort();
   };
 
   const handleReset = (event) => {

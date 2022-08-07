@@ -18,10 +18,14 @@ function Search() {
   // Handle find //
   const handleFind = (event) => {
     event.preventDefault();
-    listReservations({ mobile_number })
+
+    const abortController = new AbortController();
+    listReservations({ mobile_number }, abortController.signal)
       .then((reservations) => setReservations(reservations))
       .then(setReservationMessage("No reservations found"))
       .catch((error) => setError(error));
+
+    return () => abortController.abort();
   }
 
   return (

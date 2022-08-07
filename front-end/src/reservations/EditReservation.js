@@ -28,10 +28,14 @@ function EditReservation() {
    
   const handleSubmit = (event) => {
     event.preventDefault();
-      updateReservation(reservation)
+    
+    const abortController = new AbortController();
+      updateReservation(reservation, abortController.signal)
       // Need to slice returned date/time to only display date, because API returns full date/time string
         .then(() => history.push(`/dashboard?date=${reservation.reservation_date.slice(0, 10)}`))
         .catch((error) => setError(error));
+
+      return () => abortController.abort();
   };
 
 
@@ -42,6 +46,7 @@ function EditReservation() {
         <ErrorAlert error={error} setError={setError} />
       </div>
 
+      {/* Pass to this Form: reservation, handleSubmit, handleChange, setError */}
       {/* Reservation Form */}
       <form onSubmit={handleSubmit}>
         <div className="row mb-3">
