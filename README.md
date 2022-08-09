@@ -77,3 +77,9 @@ Each reservation card contains a "Seat" button that leads to the "Seating" page 
 An occupied table displays a "Finish" button. Clicking "Finish" displays a message to the user to confirm whether or not the reservation is finished and the table can become unoccupied. Clicking "Ok" sends a DELETE request to the server, removing the current reservation_id from the table to change the table's status to "free." The given reservation's status is changed to "finished." A reservation with a status of "finished" is not displayed on the dashboard.
 
 ![Finish Table](screenshots/finish_table.png "Finish Table")
+
+
+## Testing
+I used development, testing, preview, and production environments for this application, each with their own database instance. Responsiveness was tested with DevTools and on various devices including phones and tablets.
+
+I used [Postman](https://www.postman.com/) to test all of my back-end routes and HTTP requests, including error messages and validation. I also used the [WAVE](https://wave.webaim.org/) accessibility evaluation tool, as well as [regex101](regex101.com) for regular expression testing and [BrowserStack](browserstack.com) for cross-browser testing.
