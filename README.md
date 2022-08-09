@@ -62,6 +62,18 @@ The "Edit Reservation" page (```/reservations/:reservation_id/edit```) allows th
 
 
 ### Cancel a Reservation
-On each reservation card, a "Cancel" button is displayed only when the reservation status is "booked." Clicking "Cancel" presents a message asking the user to confirm whether or not they wish to cancel the reservation. Clicking "Ok" sends a DELETE request to the server, changes the reservation status to "Cancelled," and removes the "Edit" and "Seat" buttons from the reservation card.
+On each reservation card, a "Cancel" button is displayed only when the reservation status is "booked." Clicking "Cancel" presents a message asking the user to confirm whether or not they wish to cancel the reservation. Clicking "Ok" sends a PUT request to the server, changes the reservation status to "Cancelled," and removes the "Edit" and "Seat" buttons from the reservation card.
 
 ![Cancel Reservation](screenshots/cancel_reservation.png "Cancel Reservation")
+
+
+### Assign a Table
+Each reservation card contains a "Seat" button that leads to the "Seating" page (```/reservations/reservation_id/seat```). The user can choose a table from the dropdown menu, which contains all table names as well as their capacity. Clicking "Cancel" returns to the previous page, while clicking "Submit" sends a PUT request to the server to add the given reservation_id to the chosen table, and then displays the dashboard. The reservation card then displays a status of "Seated" and the assigned table displays a status of "Occupied" with a "Finish" button.
+
+![Assign Table](screenshots/seating.png "Assign a Table")
+
+
+### Finish a Table
+An occupied table displays a "Finish" button. Clicking "Finish" displays a message to the user to confirm whether or not the reservation is finished and the table can become unoccupied. Clicking "Ok" sends a DELETE request to the server, removing the current reservation_id from the table to change the table's status to "free." The given reservation's status is changed to "finished." A reservation with a status of "finished" is not displayed on the dashboard.
+
+![Finish Table](screenshots/finish_table.png "Finish Table")
