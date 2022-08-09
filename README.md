@@ -34,19 +34,34 @@ Each table card displays the table name, a capacity badge, and status. Default s
 
 ![Dashboard](screenshots/dashboard.png "Dashboard")
 
+
 ### Create a Reservation
-The "New Reservation" page (```/reservations/new```) allows the user to create a new reservation. Input fields include first/last name, mobile number, date, time, and number of guests. Each field has validations in the form component as well as in the back-end, and will display an error message in red at the top of the page for any violations. Clicking "Cancel" returns to the previous page, while clicking "Submit" creates the reservation and displays it on the dashboard on it's given reservation day.
+The "New Reservation" page (```/reservations/new```) allows the user to create a new reservation. Input fields include first/last name, mobile number, date, time, and number of guests. Each field has validations in the form component as well as in the back-end, and will display an error message in red at the top of the page for any violations. Clicking "Cancel" returns to the previous page, while clicking "Submit" sends a POST request to the server, creates the reservation, and displays it on the dashboard on it's given reservation day.
 
 ![Create Reservation](screenshots/new_reservation.png "Create a new reservation")
 
+
 ### Search
 The "Search" page allows the user to search for an existing reservation by mobile number. Search input can be any combination or length of numbers.
-Clicking "Find" will display all existing reservations with a mobile number that includes the given combination of numbers, and "No reservations found" otherwise.
+Clicking "Find" sends a GET request to the server, and displays all existing reservations with a mobile number that includes the given combination of numbers. "No reservations found" is displayed otherwise.
 
 ![Reservation Search](screenshots/search_screen.png "Reservation search")
 
+
 ### Create a New Table
-The "New Table" page allows the user to create a new table for the restaurant. Input fields include the table name (such as "Hi-top #4" or "Patio #2") and the table capacity, which must be a number between 1 and 8. Appropriate validation is included in the front and back-end as well as error messages.
-Clicking "Cancel" returns to the previous page, while "Submit" creates the table and adds it to the tables list on the Dashboard.
+The "New Table" page (```/tables/new```) allows the user to create a new table for the restaurant. Input fields include the table name (such as "Hi-top #4" or "Patio #2") and the table capacity, which must be a number between 1 and 8. Appropriate validation is included in the front and back-end as well as error messages.
+Clicking "Cancel" returns to the previous page, while "Submit" sends a POST request to the server, creates the table, and adds it to the tables list on the Dashboard.
 
 ![New Table](screenshots/new_table.png "New Table")
+
+
+### Edit a Reservation
+The "Edit Reservation" page (```/reservations/:reservation_id/edit```) allows the user to edit an existing reservation. Clicking the "Edit" button on a reservation card redirects to this page and displays the same form component used for "Create a New Reservation," prefilled with the given reservation's existing information. The same validations are used here as well. Clicking "Submit" sends a PUT request to the server, updates the reservation information, and displays the Dashboard.
+
+![Edit Reservation](screenshots/edit_reservation.png "Edit Reservation")
+
+
+### Cancel a Reservation
+On each reservation card, a "Cancel" button is displayed only when the reservation status is "booked." Clicking "Cancel" presents a message asking the user to confirm whether or not they wish to cancel the reservation. Clicking "Ok" sends a DELETE request to the server, changes the reservation status to "Cancelled," and removes the "Edit" and "Seat" buttons from the reservation card.
+
+![Cancel Reservation](screenshots/cancel_reservation.png "Cancel Reservation")
