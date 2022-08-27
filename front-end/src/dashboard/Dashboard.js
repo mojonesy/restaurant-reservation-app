@@ -17,10 +17,12 @@ function Dashboard({ date }) {
   const [reservationsError, setReservationsError] = useState(null);
   const [tables, setTables] = useState([]);
   const [tablesError, setTablesError] = useState(null);
+  const [loading, setLoading] = useState("Loading...");
 
-  // Load Dashboard - reservations and tables //
+  // Load Dashboard - reservations and tables, remove loading message //
   useEffect(() => {
     loadReservationsAndTables();
+    setLoading();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date]);
 
@@ -61,6 +63,7 @@ function Dashboard({ date }) {
         {/* Reservations */}
         <div className="reservations-list">
           <h4 className="mb-2">Reservations for {date}</h4>
+          <h5 className="load-message">{loading}</h5>
           <ReservationsList 
             reservations={reservations}
             setReservationsError={setReservationsError}
@@ -78,6 +81,7 @@ function Dashboard({ date }) {
           <div className="d-md-flex mb-3">
             <h4 className="mb-0">Tables</h4>
           </div>
+          <h5 className="load-message">{loading}</h5>
           <ErrorAlert error={tablesError} setError={setTablesError} />
           <TablesList 
             tables={tables}
