@@ -1,12 +1,19 @@
+.tables-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tables-card {
+  flex-basis: 20%;
+  flex-grow: 1;
+  padding: 0px 5px;
+}
+
 #tableGrid .card {
   background-color: #F8F8F4;
   border-radius: 40px;
   position: relative;
   margin-bottom: 10px;
-}
-
-#tableGrid .col-sm {
-  padding: 0px 7px;
 }
 
 .capacity-badge {
