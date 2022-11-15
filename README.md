@@ -10,7 +10,7 @@ All user stories involved front and back-end testing, appropriate error-handling
 a database and seeded it accordingly. ```cors``` is implemented in the backend.
 
 ### Check it out!
-I deployed both the server and client of this monorepo on Heroku - you can view and test it out [here!](https://periodic-tables-mj-client.herokuapp.com/dashboard)
+I deployed both the server and client of this monorepo on Render - you can view and test it out [here!](https://periodic-tables-frontend-sve1.onrender.com/dashboard)
 
 ## Languages & Frameworks used:
 - [React](https://github.com/facebook/create-react-app) & React Router
